@@ -1,0 +1,337 @@
+/* Custom cursor styles (Optional) */
+.custom-cursor {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+}
+
+.cursor-outer {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border: 2px solid var(--primary-color);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s ease, height 0.2s ease;
+  opacity: 0.5;
+}
+
+.cursor-inner {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s ease, height 0.2s ease, opacity 0.2s ease;
+}
+
+.cursor-outer.hover {
+  width: 40px;
+  height: 40px;
+  opacity: 0.3;
+  border-color: var(--secondary-color);
+}
+
+.cursor-inner.hover {
+  width: 12px;
+  height: 12px;
+  background-color: var(--secondary-color);
+}
+
+/* Additional Hover Effects */
+.certificate-item::before,
+.education-item::before,
+.interest-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    45deg,
+    rgba(52, 152, 219, 0),
+    rgba(52, 152, 219, 0.1)
+  );
+  border-radius: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.certificate-item:hover::before,
+.education-item:hover::before,
+.interest-item:hover::before {
+  opacity: 1;
+}
+
+/* Enhanced animations for headings */
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.section-header h2 {
+  position: relative;
+  z-index: 1;
+}
+
+.section-header h2::before {
+  content: attr(data-text);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: linear-gradient(
+    45deg,
+    var(--primary-color),
+    var(--secondary-color),
+    var(--accent-color)
+  );
+  background-size: 200% 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: gradient 10s ease infinite;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: -1;
+}
+
+.section-header:hover h2::before {
+  opacity: 1;
+}
+
+/* Animated borders for skill items */
+@keyframes borderAnimation {
+  0% {
+    border-image-source: linear-gradient(
+      0deg,
+      var(--primary-color),
+      var(--secondary-color)
+    );
+  }
+  25% {
+    border-image-source: linear-gradient(
+      90deg,
+      var(--primary-color),
+      var(--secondary-color)
+    );
+  }
+  50% {
+    border-image-source: linear-gradient(
+      180deg,
+      var(--primary-color),
+      var(--secondary-color)
+    );
+  }
+  75% {
+    border-image-source: linear-gradient(
+      270deg,
+      var(--primary-color),
+      var(--secondary-color)
+    );
+  }
+  100% {
+    border-image-source: linear-gradient(
+      360deg,
+      var(--primary-color),
+      var(--secondary-color)
+    );
+  }
+}
+
+.skill-category:hover .skill-progress {
+  border: 2px solid transparent;
+  border-image-slice: 1;
+  animation: borderAnimation 3s linear infinite;
+}
+
+/* Cool image hover effects */
+.profile-image::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(52, 152, 219, 0.8),
+    rgba(46, 204, 113, 0.8)
+  );
+  opacity: 0;
+  z-index: 3;
+  transition: opacity 0.3s ease;
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+}
+
+.profile-image:hover::before {
+  opacity: 0.2;
+}
+
+.profile-image:hover img {
+  transform: scale(1.05);
+  transition: transform 0.5s ease;
+}
+
+/* Enhanced button hover effects */
+.btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.2);
+  transition: width 0.3s ease;
+}
+
+.btn:hover::before {
+  width: 100%;
+}
+
+/* Contact form enhancements */
+.form-group input:focus,
+.form-group textarea:focus {
+  animation: pulse-border 1.5s infinite;
+}
+
+@keyframes pulse-border {
+  0% {
+    box-shadow: 0 0 0 0 rgba(52, 152, 219, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(52, 152, 219, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(52, 152, 219, 0);
+  }
+}
+
+/* Timeline animation enhancements */
+.timeline::after {
+  animation: timeline-pulse 2s infinite;
+}
+
+@keyframes timeline-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(52, 152, 219, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(52, 152, 219, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(52, 152, 219, 0);
+  }
+}
+
+/* Typing cursor animation for hero text */
+.hero-text h1::after {
+  content: '|';
+  display: inline-block;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Floating animation for cards */
+.certificate-item,
+.language-item {
+  animation: floating 5s ease-in-out infinite;
+}
+
+/* Stagger animation timings */
+.certificate-item:nth-child(2),
+.language-item:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.certificate-item:nth-child(3),
+.language-item:nth-child(3) {
+  animation-delay: 1s;
+}
+
+/* Animated background gradient for the hero section */
+.hero {
+  background-size: 300% 300%;
+  animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Enhanced scroll indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 50px;
+  border: 2px solid var(--primary-color);
+  border-radius: 25px;
+  z-index: 10;
+}
+
+.scroll-indicator::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  margin-left: -3px;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  animation: scroll-down 2s infinite;
+}
+
+@keyframes scroll-down {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
